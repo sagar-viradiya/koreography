@@ -1,4 +1,7 @@
 # Koreography
+_Choreograph your Compose Animation 💃🕺_
+
+<br>
 A lightweight Compose Animation utility library to choreograph [low-level Animation API](https://developer.android.com/jetpack/compose/animation#animation) through Kotlin DSL. It does the heavy lifting of dealing with coroutines under the hood so that you can focus on your animation choreography.
 
 ## Including in your project
