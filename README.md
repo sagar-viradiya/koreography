@@ -1,5 +1,5 @@
 # Koreography
-A lightweight Compose Animation utility library to choreograph low-level Animation API through Kotlin DSL. It does the heavy lifting of dealing with coroutines under the hood so that you can focus on your animation choreography.
+A lightweight Compose Animation utility library to choreograph [low-level Animation API](https://developer.android.com/jetpack/compose/animation#animation) through Kotlin DSL. It does the heavy lifting of dealing with coroutines under the hood so that you can focus on your animation choreography.
 
 ## Including in your project
 Add the following dependency in your `build.gradle` file.
@@ -78,7 +78,7 @@ The code for choreographing above animation is there in the sample app.
 
 ## Contribution
 
-This is the early preview and unfortunately it is not ready to accept any contribution yet. Once this is stable enough contribution guidelines will be updated here.
+This is the early preview and unfortunately it is not ready to accept any contribution yet. Once this is stable enough contribution guidelines will be updated here. Meanwhile feel free to start [GitHub Discussions](https://github.com/sagar-viradiya/koreography/discussions) for feature request and improvements.
 
 ## License
 
