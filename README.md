@@ -7,7 +7,7 @@ _Choreograph your Compose Animation 💃🕺_
 [![Twitter Follow](https://img.shields.io/twitter/follow/viradiya_sagar?label=Follow&style=social)](https://twitter.com/viradiya_sagar)
 
 <br>
-A lightweight Compose Animation utility library to choreograph [low-level Animation API](https://developer.android.com/jetpack/compose/animation#animation) through Kotlin DSL. It does the heavy lifting of dealing with coroutines under the hood so that you can focus on your animation choreography.
+A lightweight Compose Animation utility library to choreograph low-level Animation API (https://developer.android.com/jetpack/compose/animation#animation) through Kotlin DSL. It does the heavy lifting of dealing with coroutines under the hood so that you can focus on your animation choreography.
 
 ## Including in your project
 Koreography is available on `mavenCentral()`
