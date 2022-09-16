@@ -1,11 +1,13 @@
 # Koreography
 _Choreograph your Compose Animation 💃🕺_
+<br><br>
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.sagar-viradiya/koreography)](https://search.maven.org/artifact/io.github.sagar-viradiya/koreography)
 
 <br>
 A lightweight Compose Animation utility library to choreograph [low-level Animation API](https://developer.android.com/jetpack/compose/animation#animation) through Kotlin DSL. It does the heavy lifting of dealing with coroutines under the hood so that you can focus on your animation choreography.
 
 ## Including in your project
-Add the following dependency in your `build.gradle` file.
+Koreography is available on `mavenCentral()`
 
 ```groovy
 implementation 'io.github.sagar-viradiya:koreography:0.1.0'
