@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 
 class Koreography {
 
-    internal val moves: MoveType.SequentialMoves = MoveType.SequentialMoves()
+    internal val moves: Move.SequentialMoves = Move.SequentialMoves()
 
     private var job: Job? = null
 
@@ -38,9 +38,9 @@ class Koreography {
         }
     }
 
-    private suspend fun startDance(moves: MoveType, scope: CoroutineScope) {
-        when (moves) {
-            is MoveType.Move -> with(moves) {
+    private suspend fun startDance(move: Move, scope: CoroutineScope) {
+        when (move) {
+            is Move.SingleMove -> with(move) {
                 animate(
                     initialValue,
                     targetValue,
@@ -50,16 +50,16 @@ class Koreography {
                 )
             }
 
-            is MoveType.SequentialMoves -> {
-                moves.moves.forEach { sequentialMoves ->
+            is Move.SequentialMoves -> {
+                move.moves.forEach { sequentialMoves ->
                     coroutineScope {
                         startDance(sequentialMoves, this)
                     }
                 }
             }
 
-            is MoveType.ParallelMoves -> {
-                moves.moves.forEach { parallelMoves ->
+            is Move.ParallelMoves -> {
+                move.moves.forEach { parallelMoves ->
                     scope.launch {
                         startDance(parallelMoves, this)
                     }
@@ -69,14 +69,14 @@ class Koreography {
     }
 }
 
-fun koreography(koreographyMoves: MoveType.SequentialMoves.() -> Unit): Koreography {
+fun koreography(koreographyMoves: Move.SequentialMoves.() -> Unit): Koreography {
     return Koreography().apply {
         moves.koreographyMoves()
     }
 }
 
 @Composable
-fun rememberKoreography(koreographyMoves: MoveType.SequentialMoves.() -> Unit): Koreography {
+fun rememberKoreography(koreographyMoves: Move.SequentialMoves.() -> Unit): Koreography {
     return remember {
         koreography(koreographyMoves)
     }
