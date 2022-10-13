@@ -35,6 +35,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import io.github.sagar_viradiya.LaunchKoreography
 import io.github.sagar_viradiya.rememberKoreography
 
 class MainActivity : ComponentActivity() {
@@ -45,14 +46,19 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.fillMaxSize(),
                 color = MaterialTheme.colors.background
             ) {
-                MainScreen()
+                var state by remember {
+                    mutableStateOf(true)
+                }
+                MainScreen(state = state) {
+                    state = !state
+                }
             }
         }
     }
 }
 
 @Composable
-private fun MainScreen() {
+private fun MainScreen(state: Boolean, onClick: () -> Unit) {
 
     var alpha by remember { mutableStateOf(0f) }
     var scale by remember { mutableStateOf(0f) }
@@ -95,7 +101,7 @@ private fun MainScreen() {
         }
     }
 
-    val koreography1 = rememberKoreography {
+    LaunchKoreography(state = state) {
         parallelMoves {
             move(
                 initialValue = 0f,
@@ -152,7 +158,7 @@ private fun MainScreen() {
     ) {
 
         var imageResource by remember {
-            mutableStateOf(R.drawable.ic_droid)
+            mutableStateOf(R.drawable.ic_toy)
         }
 
         Button(onClick = {
@@ -163,7 +169,7 @@ private fun MainScreen() {
         }
         Button(onClick = {
             imageResource = R.drawable.ic_toy
-            koreography1.dance(scope)
+            onClick()
         }) {
             Text("Fade + Scale + Rotate")
         }
