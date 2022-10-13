@@ -19,18 +19,18 @@ package io.github.sagar_viradiya
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.spring
 
-sealed interface MoveType {
-    class Move(
+sealed interface Move {
+    class SingleMove(
         val initialValue: Float,
         val targetValue: Float,
         val initialVelocity: Float = 0f,
         val animationSpec: AnimationSpec<Float> = spring(),
         val block: (value: Float, velocity: Float) -> Unit
-    ) : MoveType
+    ) : Move
 
-    class SequentialMoves : MoveType {
-        private val _moves = mutableListOf<MoveType>()
-        internal val moves: List<MoveType>
+    class SequentialMoves : Move {
+        private val _moves = mutableListOf<Move>()
+        internal val moves: List<Move>
             get() = _moves.toList()
 
         fun move(
@@ -40,7 +40,7 @@ sealed interface MoveType {
             animationSpec: AnimationSpec<Float> = spring(),
             block: (value: Float, velocity: Float) -> Unit
         ) {
-            _moves += Move(initialValue, targetValue, initialVelocity, animationSpec, block)
+            _moves += SingleMove(initialValue, targetValue, initialVelocity, animationSpec, block)
         }
 
         fun parallelMoves(parallelMoves: ParallelMoves.() -> Unit) {
@@ -52,9 +52,9 @@ sealed interface MoveType {
         }
     }
 
-    class ParallelMoves : MoveType {
-        private val _moves = mutableListOf<MoveType>()
-        internal val moves: List<MoveType>
+    class ParallelMoves : Move {
+        private val _moves = mutableListOf<Move>()
+        internal val moves: List<Move>
             get() = _moves.toList()
 
         fun move(
@@ -64,7 +64,7 @@ sealed interface MoveType {
             animationSpec: AnimationSpec<Float> = spring(),
             block: (value: Float, velocity: Float) -> Unit
         ) {
-            _moves += Move(initialValue, targetValue, initialVelocity, animationSpec, block)
+            _moves += SingleMove(initialValue, targetValue, initialVelocity, animationSpec, block)
         }
 
         fun sequentialMoves(sequentialMoves: SequentialMoves.() -> Unit) {

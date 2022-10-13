@@ -7,18 +7,147 @@ _Choreograph your Compose Animation 💃🕺_
 [![Twitter Follow](https://img.shields.io/twitter/follow/viradiya_sagar?label=Follow&style=social)](https://twitter.com/viradiya_sagar)
 
 <br>
-A lightweight Compose Animation utility library to choreograph [low-level Animation API](https://developer.android.com/jetpack/compose/animation#animation) through Kotlin DSL. It does the heavy lifting of dealing with coroutines under the hood so that you can focus on your animation choreography.
+A lightweight Compose Animation utility library to choreograph low-level Animation API (https://developer.android.com/jetpack/compose/animation#animation) through Kotlin DSL. It does the heavy lifting of dealing with coroutines under the hood so that you can focus on your animation choreography.
 
 ## Including in your project
 Koreography is available on `mavenCentral()`
 
 ```groovy
-implementation 'io.github.sagar-viradiya:koreography:0.1.0'
+implementation 'io.github.sagar-viradiya:koreography:0.2.0'
 ```
 
 ## Usage
 
-You can write complex choreography through clean and concise Kotlin DSL. 
+Creating koreography is the process of recording moves that can be either parallel or sequential. You can declare complex choreography through clean and concise Kotlin DSL. 
+
+### Choreographying sequential animation
+
+```kotlin
+val koreography = rememberKoreography {
+    move(
+        initialValue = 0f,
+        targetValue = 1f,
+        animationSpec = tween(500)
+    ) { value, velocity ->
+        // Update the state value used for animation here
+    }
+    
+    move(
+        initialValue = 0f,
+        targetValue = 2f,
+        animationSpec = tween(500)
+    ) { value, velocity ->
+        // Update the state value used for animation here
+    }
+}
+```
+
+> The `move` call is identical to `animate` suspend function of compose except it is not suspend function since, creating koregraphy is just a process of recording moves
+
+### Choreographying parallel animation
+
+```kotlin
+val koreography = rememberKoreography {
+    parallelMoves {
+        move(
+            initialValue = 0f,
+            targetValue = 1f,
+            animationSpec = tween(500)
+        ) { value, velocity ->
+            // Update the state value used for animation here
+        }
+        
+        move(
+            initialValue = 0f,
+            targetValue = 2f,
+            animationSpec = tween(500)
+        ) { value, velocity ->
+            // Update the state value used for animation here
+        }
+    }
+}
+```
+
+### Complex choreography
+You can have a nested hierarchy of moves to create complex choreography. The example below has three animations running parallelly and out of them, the last one has two animations within running sequentially.
+
+```kotlin
+val koreography = rememberKoreography {
+    parallelMoves {
+        move(
+            initialValue = 0f,
+            targetValue = 1f,
+            animationSpec = tween(500)
+        ) { value, velocity ->
+            // Update the state value used for animation here
+        }
+        
+        move(
+            initialValue = 0f,
+            targetValue = 2f,
+            animationSpec = tween(500)
+        ) { value, velocity ->
+            // Update the state value used for animation here
+        }
+        
+        sequentialMoves {
+            move(
+                initialValue = 0f,
+                targetValue = 1f,
+                animationSpec = tween(500)
+            ) { value, velocity ->
+                // Update the state value used for animation here
+            }
+            
+            move(
+                initialValue = 0f,
+                targetValue = 2f,
+                animationSpec = tween(500)
+            ) { value, velocity ->
+                // Update the state value used for animation here
+            }
+        }
+    }
+}
+``` 
+
+### Executing koreography outside composable scope
+
+Once `Koreography` is ready it's time to dance! 💃🕺.
+
+You can execute the choreography outside the composable scope (button click) by calling `dance` function.
+
+```kotlin
+koreography.dance(coroutineScope)
+```
+
+> Please note the `coroutineScope` should be obtained through `rememberCoroutineScope()`. Make sure you pass coroutine scope which will get cleared once you exit composition.
+
+### Executing koreography based on state change 🚀
+
+Executing choreography based on state change is also supported. This API is similar to [`LaunchedEffect`](https://developer.android.com/jetpack/compose/side-effects#launchedeffect) API of compose side effects.
+
+```kotlin
+LaunchKoreography(state) {
+    move(
+        initialValue = 0f,
+        targetValue = 1f,
+        animationSpec = tween(500)
+    ) { value, velocity ->
+        // Update the state value used for animation here
+    }
+    
+    move(
+        initialValue = 0f,
+        targetValue = 2f,
+        animationSpec = tween(500)
+    ) { value, velocity ->
+        // Update the state value used for animation here
+    }
+}
+```
+
+The choreography passed in the trailing lambda above would be executed on every `state` change.
 
 ### Example 1
 The following example consists of two animations running sequentially having two parallel animations (Scale + Fade) within each. The first animation fades in alpha value and scales up the image. The second fade out and scale the image.
@@ -40,6 +169,7 @@ val koreography = rememberKoreography {
         ) { value, _ ->
             alpha = value
         }
+        
         move(
             initialValue = 0f,
             targetValue = 2f,
@@ -48,6 +178,7 @@ val koreography = rememberKoreography {
             scale = value
         }
     }
+    
     parallelMoves {
         move(
             initialValue = 1f,
@@ -56,6 +187,7 @@ val koreography = rememberKoreography {
         ) { value, _ ->
             alpha = value
         }
+        
         move(
             initialValue = 2f,
             targetValue = 4f,
@@ -65,16 +197,9 @@ val koreography = rememberKoreography {
         }
     }
 }
-```
 
-Once `Koreography` is ready it's time to dance! 💃🕺
-
-```kotlin
-// Composable scope
 koreography.dance(rememberCoroutineScope())
 ```
-
-Please note the `rememberCoroutineScope()` passed as a scope. Make sure you pass coroutine scope which will get cleared once you exit composition.
 
 ### Example 2
 
