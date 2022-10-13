@@ -18,6 +18,7 @@ package io.github.sagar_viradiya
 
 import androidx.compose.animation.core.animate
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -38,7 +39,7 @@ class Koreography {
         }
     }
 
-    private suspend fun startDance(move: Move, scope: CoroutineScope) {
+    internal suspend fun startDance(move: Move, scope: CoroutineScope) {
         when (move) {
             is Move.SingleMove -> with(move) {
                 animate(
@@ -79,5 +80,14 @@ fun koreography(koreographyMoves: Move.SequentialMoves.() -> Unit): Koreography 
 fun rememberKoreography(koreographyMoves: Move.SequentialMoves.() -> Unit): Koreography {
     return remember {
         koreography(koreographyMoves)
+    }
+}
+
+@Composable
+fun <T> LaunchKoreography(state: T, koreographyMoves: Move.SequentialMoves.() -> Unit) {
+    rememberKoreography(koreographyMoves = koreographyMoves).run {
+        LaunchedEffect(state) {
+            startDance(moves, this)
+        }
     }
 }

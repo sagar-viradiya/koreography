@@ -111,15 +111,43 @@ val koreography = rememberKoreography {
 }
 ``` 
 
-Once `Koreography` is ready it's time to dance! 💃🕺
+### Executing koreography outside composable scope
+
+Once `Koreography` is ready it's time to dance! 💃🕺.
+
+You can execute the choreography outside the composable scope (button click) by calling `dance` function.
 
 ```kotlin
-// Composable scope
-koreography.dance(rememberCoroutineScope())
+koreography.dance(coroutineScope)
 ```
 
-> Please note the `rememberCoroutineScope()` passed as a scope. Make sure you pass coroutine scope which will get cleared once you exit composition.
+> Please note the `coroutineScope` should be obtained through `rememberCoroutineScope()`. Make sure you pass coroutine scope which will get cleared once you exit composition.
 
+### Executing koreography based on state change 🚀
+
+Executing choreography based on state change is also supported. This API is similar to [`LaunchedEffect`](https://developer.android.com/jetpack/compose/side-effects#launchedeffect) API of compose side effects.
+
+```kotlin
+LaunchKoreography(state) {
+    move(
+        initialValue = 0f,
+        targetValue = 1f,
+        animationSpec = tween(500)
+    ) { value, velocity ->
+        // Update the state value used for animation here
+    }
+    
+    move(
+        initialValue = 0f,
+        targetValue = 2f,
+        animationSpec = tween(500)
+    ) { value, velocity ->
+        // Update the state value used for animation here
+    }
+}
+```
+
+The choreography passed in the trailing lambda above would be executed on every `state` change.
 
 ### Example 1
 The following example consists of two animations running sequentially having two parallel animations (Scale + Fade) within each. The first animation fades in alpha value and scales up the image. The second fade out and scale the image.
