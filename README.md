@@ -13,7 +13,7 @@ A lightweight Compose Animation utility library to choreograph low-level Animati
 Koreography is available on `mavenCentral()`
 
 ```groovy
-implementation 'io.github.sagar-viradiya:koreography:0.1.0'
+implementation 'io.github.sagar-viradiya:koreography:0.2.0'
 ```
 
 ## Usage
