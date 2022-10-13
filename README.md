@@ -111,18 +111,21 @@ val koreography = rememberKoreography {
 }
 ``` 
 
-Once `Koreography` is ready it's time to dance! 💃🕺
+### Executing koreography outside composable scope
+
+Once `Koreography` is ready it's time to dance! 💃🕺.
+
+You can execute the choreography outside the composable scope (button click) by calling `dance` function.
 
 ```kotlin
-// Composable scope
-koreography.dance(rememberCoroutineScope())
+koreography.dance(coroutineScope)
 ```
 
-> Please note the `rememberCoroutineScope()` passed as a scope. Make sure you pass coroutine scope which will get cleared once you exit composition.
+> Please note the `coroutineScope` should be obtained through `rememberCoroutineScope()`. Make sure you pass coroutine scope which will get cleared once you exit composition.
 
-### Launching koreography based on state change 🚀
+### Executing koreography based on state change 🚀
 
-Animating choreography based on state change is also supported. This API is similar to [`LaunchedEffect`](https://developer.android.com/jetpack/compose/side-effects#launchedeffect) API of compose side effects.
+Executing choreography based on state change is also supported. This API is similar to [`LaunchedEffect`](https://developer.android.com/jetpack/compose/side-effects#launchedeffect) API of compose side effects.
 
 ```kotlin
 LaunchKoreography(state) {
