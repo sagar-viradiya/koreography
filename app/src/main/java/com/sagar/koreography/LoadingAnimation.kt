@@ -135,7 +135,8 @@ fun LoadingAnimation() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp).clickable {
+            .padding(16.dp)
+            .clickable {
                 koreography.danceForever(coroutineScope)
             },
     ) {
@@ -178,9 +179,4 @@ fun LoadingAnimation() {
             )
         }
     }
-
-
 }
-
-
-
