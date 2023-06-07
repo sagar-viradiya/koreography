@@ -17,8 +17,6 @@
 package com.sagar.koreography
 
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -74,7 +72,6 @@ fun RangoliAnimation() {
                 koreography.danceForever(coroutineScope)
             }
     ) {
-
         Image(
             modifier = Modifier.align(Alignment.Center),
             painter = painterResource(id = R.drawable.rangoli_base),

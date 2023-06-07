@@ -17,7 +17,6 @@
 package com.sagar.koreography
 
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
@@ -157,7 +156,6 @@ fun NFCAnimation() {
             targetValue = 1f,
             animationSpec = tween(durationMillis = 200)
         )
-
         parallelMoves {
             move(animatable = scaleLine, targetValue = 1f, animationSpec = tween(200))
             move(
@@ -166,11 +164,9 @@ fun NFCAnimation() {
                 animationSpec = tween(300)
             )
         }
-
         move(animatable = translateLine, targetValue = 112.dp.value, animationSpec = tween(300))
         move(animatable = translateLine, targetValue = 0.dp.value, animationSpec = tween(300))
         move(animatable = scaleLine, targetValue = 0f, animationSpec = tween(200))
-
         parallelMoves {
             move(animatable = scaleReferenceFrame, targetValue = 0f, animationSpec = tween(200))
             move(animatable = alphaReferenceFrame, targetValue = 0f, animationSpec = tween(200))
@@ -205,7 +201,6 @@ fun NFCAnimation() {
                 )
             )
         }
-
         parallelMoves {
             move(
                 animatable = translationYCard,
@@ -245,7 +240,6 @@ fun NFCAnimation() {
                 }
             }
         }
-
         parallelMoves {
             move(
                 animatable = translationYCard,
@@ -285,7 +279,6 @@ fun NFCAnimation() {
                 }
             }
         }
-
         parallelMoves {
             move(
                 animatable = translationYCard,
@@ -325,7 +318,6 @@ fun NFCAnimation() {
                 }
             }
         }
-
         parallelMoves {
             move(animatable = alphaNFC, targetValue = 0f, animationSpec = tween(50))
             move(
@@ -334,7 +326,6 @@ fun NFCAnimation() {
                 animationSpec = tween(400, easing = LinearOutSlowInEasing)
             )
         }
-
         parallelMoves {
             move(animatable = translationZCard, targetValue = 1f, animationSpec = tween(50))
             move(
@@ -349,7 +340,6 @@ fun NFCAnimation() {
             )
             move(animatable = rotationGreenCircle, targetValue = 360f, animationSpec = tween(1000))
         }
-
     }
 
     val coroutineScope = rememberCoroutineScope()
@@ -509,7 +499,6 @@ fun NFCAnimation() {
                         scaleY = scaleGreenCircle.value
                     }
             )
-
         }
     }
 }

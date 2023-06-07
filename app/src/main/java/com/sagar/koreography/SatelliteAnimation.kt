@@ -98,9 +98,11 @@ fun SatelliteAnimation() {
             contentDescription = null
         )
 
-        Canvas(modifier = Modifier.fillMaxSize().graphicsLayer {
-            translationY = translateY.value
-        }) {
+        Canvas(modifier = Modifier
+            .fillMaxSize()
+            .graphicsLayer {
+                translationY = translateY.value
+            }) {
             val firstPoint = points.first()
             path.moveTo(firstPoint.x, firstPoint.y)
             for (i in 1 until points.size) {
