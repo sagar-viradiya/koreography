@@ -19,14 +19,17 @@ package com.sagar.koreography
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -40,7 +43,6 @@ fun MeditationAnimation() {
     val offsetYMeditationAura = remember { Animatable(0f) }
     val scaleAura = remember { Animatable(1f) }
     val scaleShadow = remember { Animatable(1f) }
-    val rotation = remember { Animatable(0f) }
     val koreography = rememberKoreography {
         parallelMoves {
             move(animatable = offsetYMeditation, targetValue = -160f, animationSpec = tween(2000))
@@ -51,24 +53,23 @@ fun MeditationAnimation() {
             )
             move(animatable = scaleAura, targetValue = 1.2f, animationSpec = tween(2000))
             move(animatable = scaleShadow, targetValue = 0.5f, animationSpec = tween(2000))
-            move(animatable = rotation, targetValue = 360f, animationSpec = tween(2000))
         }
         parallelMoves {
             move(animatable = offsetYMeditation, targetValue = 160f, animationSpec = tween(2000))
             move(animatable = offsetYMeditationAura, targetValue = 80f, animationSpec = tween(2000))
             move(animatable = scaleAura, targetValue = 0.8f, animationSpec = tween(2000))
             move(animatable = scaleShadow, targetValue = 1.2f, animationSpec = tween(2000))
-            move(animatable = rotation, targetValue = 0f, animationSpec = tween(2000))
         }
     }
-
-    Column(
+    val coroutineScope = rememberCoroutineScope()
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
+            .clickable { koreography.danceForever(coroutineScope) }
     ) {
 
-        Box(Modifier.fillMaxSize()) {
+
             Image(
                 painter = painterResource(R.drawable.meditation_aura),
                 modifier = Modifier
@@ -88,7 +89,6 @@ fun MeditationAnimation() {
                     .align(Alignment.Center)
                     .graphicsLayer {
                         scaleX = scaleShadow.value
-                        scaleY = scaleShadow.value
                     },
                 contentDescription = null,
                 contentScale = ContentScale.Crop
@@ -100,32 +100,10 @@ fun MeditationAnimation() {
                     .align(Alignment.Center)
                     .graphicsLayer {
                         translationY = offsetYMeditation.value
-                        rotationX = rotation.value
                     },
                 contentDescription = null,
                 contentScale = ContentScale.Crop
             )
         }
 
-        LaunchKoreography(state = true) {
-            parallelMoves {
-                move(animatable = offsetYMeditation, targetValue = -160f, animationSpec = tween(2000))
-                move(
-                    animatable = offsetYMeditationAura,
-                    targetValue = -80f,
-                    animationSpec = tween(2000)
-                )
-                move(animatable = scaleAura, targetValue = 1.2f, animationSpec = tween(2000))
-                move(animatable = scaleShadow, targetValue = 0.5f, animationSpec = tween(2000))
-                move(animatable = rotation, targetValue = 360f, animationSpec = tween(2000))
-            }
-            parallelMoves {
-                move(animatable = offsetYMeditation, targetValue = 160f, animationSpec = tween(2000))
-                move(animatable = offsetYMeditationAura, targetValue = 80f, animationSpec = tween(2000))
-                move(animatable = scaleAura, targetValue = 0.8f, animationSpec = tween(2000))
-                move(animatable = scaleShadow, targetValue = 1.2f, animationSpec = tween(2000))
-                move(animatable = rotation, targetValue = 0f, animationSpec = tween(2000))
-            }
-        }
-    }
 }
