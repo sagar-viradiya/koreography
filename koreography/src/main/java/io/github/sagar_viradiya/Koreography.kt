@@ -16,7 +16,8 @@
 
 package io.github.sagar_viradiya
 
-import androidx.compose.animation.core.animate
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.AnimationVector
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -24,37 +25,74 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import java.lang.Double.POSITIVE_INFINITY
 
-class Koreography {
+class Koreography<T, V : AnimationVector> {
 
-    internal val moves: Move.SequentialMoves = Move.SequentialMoves()
+    internal val moves: Move.SequentialMoves<T, V> = Move.SequentialMoves()
 
     private var job: Job? = null
 
-    fun dance(scope: CoroutineScope) {
+    fun dance(scope: CoroutineScope, onDanceFinished: () -> Unit = {}) {
         // In case we want to dance from start then cancel current dance
+        _dance(count = 1, scope = scope, onDanceFinished)
+    }
+
+    fun repeatDance(count: Int, scope: CoroutineScope, onDanceFinished: () -> Unit = {}) {
+        // In case we want to dance from start then cancel current dance
+        _dance(count = count, scope = scope, onDanceFinished)
+    }
+
+    fun danceForever(scope: CoroutineScope) {
+        _dance(scope = scope)
+    }
+
+    fun snapTo(scope: CoroutineScope, animatableTargetMap: Map<Animatable<T, V>, T>) {
+        /* Cancel the on going animation and set the final state of all animations to value passed
+           in [animatableTargetMap] */
         job?.cancel()
-        job = scope.launch {
-            startDance(moves, this)
+        scope.launch {
+            snapTo(animatableTargetMap = animatableTargetMap)
         }
     }
 
-    internal suspend fun startDance(move: Move, scope: CoroutineScope) {
-        when (move) {
-            is Move.SingleMove -> with(move) {
-                animate(
-                    initialValue,
-                    targetValue,
-                    initialVelocity,
-                    animationSpec,
-                    block
-                )
-            }
+    suspend fun snapTo(animatableTargetMap: Map<Animatable<T, V>, T>) {
+        animatableTargetMap.forEach { (animatable, target) ->
+            animatable.snapTo(target)
+        }
+    }
 
+    internal suspend fun resetAndStartDance(scope: CoroutineScope) {
+        snapAnimationToInitialValue()
+        startDance(scope)
+    }
+
+    private fun _dance(
+        count: Number = POSITIVE_INFINITY,
+        scope: CoroutineScope,
+        onDanceFinished: () -> Unit = {}
+    ) {
+        job?.cancel()
+        job = scope.launch {
+            if (count == POSITIVE_INFINITY) {
+                while (true) {
+                    startDance(this)
+                }
+            } else {
+                repeat(count as Int) {
+                    startDance(this)
+                }
+                onDanceFinished()
+            }
+        }
+    }
+
+    private suspend fun startDance(scope: CoroutineScope, move: Move<T, V> = moves) {
+        when (move) {
             is Move.SequentialMoves -> {
                 move.moves.forEach { sequentialMoves ->
                     coroutineScope {
-                        startDance(sequentialMoves, this)
+                        startDance(this, sequentialMoves)
                     }
                 }
             }
@@ -62,32 +100,69 @@ class Koreography {
             is Move.ParallelMoves -> {
                 move.moves.forEach { parallelMoves ->
                     scope.launch {
-                        startDance(parallelMoves, this)
+                        startDance(this, parallelMoves)
                     }
                 }
+            }
+
+            is Move.SingleAnimatableMove -> with(move) {
+                animatable.animateTo(
+                    targetValue = targetValue,
+                    initialVelocity = initialVelocity,
+                    animationSpec = animationSpec
+                )
+            }
+        }
+    }
+
+    private suspend fun snapAnimationToInitialValue(move: Move<T, V> = moves) {
+        when (move) {
+            is Move.ParallelMoves -> {
+                move.moves.forEach {
+                    snapAnimationToInitialValue(it)
+                }
+            }
+
+            is Move.SequentialMoves -> {
+                move.moves.forEach {
+                    snapAnimationToInitialValue(it)
+                }
+            }
+
+            is Move.SingleAnimatableMove -> {
+                move.animatable.snapTo(move.initialValue)
             }
         }
     }
 }
 
-fun koreography(koreographyMoves: Move.SequentialMoves.() -> Unit): Koreography {
-    return Koreography().apply {
+fun <T, V : AnimationVector> koreography(
+    koreographyMoves: Move.SequentialMoves<T, V>.() -> Unit
+): Koreography<T, V> {
+    return Koreography<T, V>().apply {
         moves.koreographyMoves()
     }
 }
 
 @Composable
-fun rememberKoreography(koreographyMoves: Move.SequentialMoves.() -> Unit): Koreography {
+fun <T, V : AnimationVector> rememberKoreography(
+    koreographyMoves: Move.SequentialMoves<T, V>.() -> Unit
+): Koreography<T, V> {
     return remember {
         koreography(koreographyMoves)
     }
 }
 
 @Composable
-fun <T> LaunchKoreography(state: T, koreographyMoves: Move.SequentialMoves.() -> Unit) {
+fun <S, T, V : AnimationVector> LaunchKoreography(
+    state: S,
+    onDanceFinished: () -> Unit = {},
+    koreographyMoves: Move.SequentialMoves<T, V>.() -> Unit
+) {
     rememberKoreography(koreographyMoves = koreographyMoves).run {
         LaunchedEffect(state) {
-            startDance(moves, this)
+            resetAndStartDance(this)
+            onDanceFinished()
         }
     }
 }
