@@ -1,0 +1,25 @@
+<!--
+  ~ Copyright 2022 Koreography Contributors
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="160dp"
+    android:height="158dp"
+    android:viewportWidth="160"
+    android:viewportHeight="158">
+  <path
+      android:pathData="M83.13,12.84L94.35,23.98C97.28,26.89 101.37,28.3 105.47,27.83L121.18,26C128.61,25.13 135.35,30.46 136.21,37.9C136.33,38.91 136.34,39.93 136.23,40.94L134.51,56.66C134.07,60.76 135.51,64.85 138.44,67.76L149.66,78.9C154.98,84.18 155.01,92.77 149.73,98.08C149.01,98.8 148.22,99.44 147.36,99.98L134,108.42C130.51,110.63 128.22,114.31 127.78,118.41L126.06,134.13C125.25,141.57 118.55,146.95 111.1,146.14C110.09,146.03 109.1,145.8 108.14,145.47L93.2,140.32C89.3,138.98 85,139.48 81.51,141.68L68.15,150.12C61.82,154.13 53.45,152.25 49.44,145.93C48.9,145.07 48.45,144.15 48.11,143.19L42.84,128.29C41.46,124.39 38.38,121.34 34.48,119.99L19.54,114.85C12.47,112.39 8.72,104.67 11.17,97.58C11.5,96.63 11.94,95.71 12.48,94.85L20.84,81.43C23.02,77.93 23.49,73.62 22.11,69.73L16.83,54.83C14.34,47.76 18.04,40.01 25.1,37.51C26.06,37.18 27.05,36.95 28.06,36.83L43.76,35C47.86,34.52 51.52,32.21 53.71,28.71L62.07,15.28C66.03,8.93 74.39,6.99 80.75,10.95C81.61,11.49 82.41,12.12 83.13,12.84Z"
+      android:fillColor="#20D56A"/>
+</vector>
