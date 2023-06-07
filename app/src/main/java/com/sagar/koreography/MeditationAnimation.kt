@@ -67,40 +67,39 @@ fun MeditationAnimation() {
     ) {
 
 
-            Image(
-                painter = painterResource(R.drawable.meditation_aura),
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .graphicsLayer {
-                        translationY = offsetYMeditationAura.value
-                        scaleX = scaleAura.value
-                        scaleY = scaleAura.value
-                    },
-                contentDescription = null,
-                contentScale = ContentScale.Crop
-            )
+        Image(
+            painter = painterResource(R.drawable.meditation_aura),
+            modifier = Modifier
+                .align(Alignment.Center)
+                .graphicsLayer {
+                    translationY = offsetYMeditationAura.value
+                    scaleX = scaleAura.value
+                    scaleY = scaleAura.value
+                },
+            contentDescription = null,
+            contentScale = ContentScale.Crop
+        )
 
-            Image(
-                painter = painterResource(R.drawable.meditation_shadow),
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .graphicsLayer {
-                        scaleX = scaleShadow.value
-                    },
-                contentDescription = null,
-                contentScale = ContentScale.Crop
-            )
+        Image(
+            painter = painterResource(R.drawable.meditation_shadow),
+            modifier = Modifier
+                .align(Alignment.Center)
+                .graphicsLayer {
+                    scaleX = scaleShadow.value
+                },
+            contentDescription = null,
+            contentScale = ContentScale.Crop
+        )
 
-            Image(
-                painter = painterResource(R.drawable.meditation),
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .graphicsLayer {
-                        translationY = offsetYMeditation.value
-                    },
-                contentDescription = null,
-                contentScale = ContentScale.Crop
-            )
-        }
-
+        Image(
+            painter = painterResource(R.drawable.meditation),
+            modifier = Modifier
+                .align(Alignment.Center)
+                .graphicsLayer {
+                    translationY = offsetYMeditation.value
+                },
+            contentDescription = null,
+            contentScale = ContentScale.Crop
+        )
+    }
 }
