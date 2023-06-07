@@ -1,0 +1,43 @@
+<!--
+  ~ Copyright 2022 Koreography Contributors
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="158dp"
+    android:height="270dp"
+    android:viewportWidth="158"
+    android:viewportHeight="270">
+
+  <path
+      android:pathData="M152.78,30.16L153,239.65C153.01,253.42 142.76,264.59 130.09,264.61L28.18,264.73C15.51,264.75 5.23,253.6 5.22,239.83L5,30.35C4.99,16.58 15.24,5.41 27.91,5.4L129.82,5.27C142.49,5.25 152.77,16.4 152.78,30.16Z"
+      android:fillColor="#ffffff"
+      android:fillAlpha="0.8"/>
+  <path
+      android:pathData="M152.78,30.16L153,239.65C153.01,253.42 142.76,264.59 130.09,264.61L28.18,264.73C15.51,264.75 5.23,253.6 5.22,239.83L5,30.35C4.99,16.58 15.24,5.41 27.91,5.4L129.82,5.27C142.49,5.25 152.77,16.4 152.78,30.16Z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="10"
+      android:fillColor="#00000000"
+      android:strokeColor="#1F202B"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M112.78,7.62C112.9,11.07 110.41,13.98 107.23,14.11H50.77C47.58,13.98 45.1,11.07 45.21,7.62"
+      android:strokeLineJoin="round"
+      android:strokeWidth="10"
+      android:fillColor="#00000000"
+      android:strokeColor="#1F202B"
+      android:strokeLineCap="round"/>
+
+
+</vector>

@@ -1,0 +1,37 @@
+<!--
+  ~ Copyright 2022 Koreography Contributors
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="183dp"
+    android:height="184dp"
+    android:viewportWidth="183"
+    android:viewportHeight="184">
+  <path
+      android:pathData="M91.65,0.72C142.03,0.72 182.93,41.62 182.93,92C182.93,142.38 142.03,183.28 91.65,183.28C41.28,183.28 0.37,142.38 0.37,92C0.37,41.62 41.28,0.72 91.65,0.72Z">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startX="91.65"
+          android:startY="0.72"
+          android:endX="91.65"
+          android:endY="183.28"
+          android:type="linear">
+        <item android:offset="0" android:color="#FFF8E86A"/>
+        <item android:offset="1" android:color="#FFFAB659"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+</vector>
