@@ -1,0 +1,52 @@
+<!--
+  ~ Copyright 2022 Koreography Contributors
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="1080dp"
+    android:height="1080dp"
+    android:viewportWidth="1080"
+    android:viewportHeight="1080">
+  <path
+      android:pathData="M732.4,534.6L551.1,429.9C548.2,428.3 546.7,424.3 547.8,420.9L588.8,287.8C589.8,284.5 592.9,283.1 595.8,284.8L777.1,389.5C780,391.1 781.5,395.2 780.5,398.5L739.5,531.6C738.4,534.9 735.3,536.3 732.4,534.6Z"
+      android:strokeAlpha="0.5"
+      android:fillColor="#06033E"
+      android:fillAlpha="0.5"/>
+  <path
+      android:pathData="M564.3,291L523.3,424.2C522.2,427.5 523.7,431.5 526.6,433.1L707.9,537.8C710.8,539.5 713.9,538.1 714.9,534.8L756,401.7C757,398.4 755.5,394.4 752.6,392.7L571.3,288C570.4,287.5 569.6,287.3 568.8,287.3C566.8,287.3 565,288.7 564.3,291Z">
+    <aapt:attr name="android:fillColor">
+      <gradient
+          android:startX="672"
+          android:startY="432.9"
+          android:endX="540.5"
+          android:endY="374.2"
+          android:type="linear">
+        <item android:offset="0" android:color="#FF560DE5"/>
+        <item android:offset="0.5" android:color="#FF801FEF"/>
+        <item android:offset="1" android:color="#FFAA31F8"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="M707.9,537.8L526.6,433.1C523.7,431.5 522.2,427.5 523.3,424.2L564.3,291C565.3,287.7 568.4,286.4 571.3,288L752.6,392.7C755.5,394.4 757,398.4 756,401.7L714.9,534.8C713.9,538.1 710.8,539.5 707.9,537.8Z"
+      android:strokeAlpha="0.5"
+      android:fillColor="#06033E"
+      android:fillAlpha="0.5"/>
+  <path
+      android:pathData="M752.6,392.7L571.3,288C569.5,287 567.6,287.1 566.2,288.2C567,288.1 567.9,288.3 568.8,288.8L750.2,393.6C753,395.2 754.5,399.2 753.5,402.5L712.5,535.7C712.1,536.9 711.4,537.9 710.6,538.5C712.5,538.4 714.2,537.1 714.9,534.8L756,401.7C757,398.4 755.5,394.4 752.6,392.7Z"
+      android:fillColor="#ffffff"/>
+
+</vector>

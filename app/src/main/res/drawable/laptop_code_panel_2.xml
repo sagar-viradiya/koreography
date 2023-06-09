@@ -1,0 +1,63 @@
+<!--
+  ~ Copyright 2022 Koreography Contributors
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="1080dp"
+    android:height="1080dp"
+    android:viewportWidth="1080"
+    android:viewportHeight="1080">
+
+  <path
+      android:pathData="M611.5,387.1L578.9,368.2C577.8,367.6 577.3,366.2 577.6,365C578,363.8 579.1,363.4 580.1,364L612.7,382.8C613.8,383.4 614.3,384.8 614,386C613.6,387.2 612.5,387.7 611.5,387.1Z"
+      android:fillColor="#E8975B"/>
+  <path
+      android:pathData="M592.2,396.9L573.5,386.1C572.5,385.5 571.9,384.1 572.3,382.9C572.6,381.7 573.8,381.3 574.8,381.9L593.5,392.7C594.5,393.3 595.1,394.7 594.8,395.9C594.4,397.1 593.3,397.5 592.2,396.9Z"
+      android:fillColor="#E8975B"/>
+  <path
+      android:pathData="M623.4,404.5L616.6,400.5C615.6,399.9 615,398.5 615.4,397.3C615.8,396.1 616.9,395.7 617.9,396.3L624.7,400.2C625.8,400.8 626.3,402.2 626,403.4C625.6,404.6 624.5,405.1 623.4,404.5Z"
+      android:fillColor="#E8975B"/>
+  <path
+      android:pathData="M590.7,417L568.2,404C567.1,403.4 566.6,402 566.9,400.8C567.3,399.6 568.4,399.2 569.5,399.8L591.9,412.8C593,413.4 593.5,414.8 593.2,416C592.8,417.2 591.7,417.6 590.7,417Z"
+      android:fillColor="#F8359E"/>
+  <path
+      android:pathData="M570,436.6L550.8,425.5C549.8,424.9 549.2,423.5 549.6,422.3C549.9,421.1 551.1,420.6 552.1,421.2L571.2,432.3C572.3,432.9 572.8,434.3 572.5,435.5C572.1,436.7 571,437.2 570,436.6Z"
+      android:fillColor="#E8975B"/>
+  <path
+      android:pathData="M615.4,357.9L604.2,351.4C603.2,350.8 602.6,349.3 603,348.2C603.3,347 604.5,346.5 605.5,347.1L616.7,353.6C617.8,354.2 618.3,355.6 618,356.8C617.6,358 616.5,358.5 615.4,357.9Z"
+      android:fillColor="#ffffff"/>
+  <path
+      android:pathData="M642.2,373.3L625.6,363.7C624.6,363.1 624,361.7 624.4,360.5C624.7,359.3 625.9,358.9 626.9,359.5L643.4,369C644.5,369.6 645,371.1 644.7,372.2C644.3,373.4 643.2,373.9 642.2,373.3Z"
+      android:fillColor="#ffffff"/>
+  <path
+      android:pathData="M692.6,402.4L652.3,379.2C651.3,378.6 650.7,377.1 651.1,375.9C651.4,374.8 652.6,374.3 653.6,374.9L693.9,398.1C694.9,398.7 695.5,400.2 695.1,401.3C694.8,402.5 693.6,403 692.6,402.4Z"
+      android:fillColor="#E8975B"/>
+  <path
+      android:pathData="M594.1,345.5L577.5,336C576.5,335.4 575.9,333.9 576.3,332.7C576.6,331.6 577.8,331.1 578.8,331.7L595.3,341.2C596.4,341.8 596.9,343.3 596.6,344.5C596.2,345.6 595.1,346.1 594.1,345.5Z"
+      android:fillColor="#F8359E"/>
+  <path
+      android:pathData="M697.1,381.7L688.9,377C688.1,376.5 687.7,375.5 688,374.6C688.3,373.7 689.1,373.4 689.8,373.8L698,378.6C698.8,379 699.2,380.1 698.9,380.9C698.7,381.8 697.9,382.1 697.1,381.7Z"
+      android:fillColor="#ffffff"/>
+  <path
+      android:pathData="M712.7,390.7L704.5,386C703.8,385.6 703.4,384.5 703.6,383.6C703.9,382.8 704.7,382.4 705.5,382.9L713.7,387.6C714.4,388 714.8,389.1 714.6,390C714.3,390.8 713.5,391.2 712.7,390.7Z"
+      android:fillColor="#ffffff"/>
+  <path
+      android:pathData="M728.4,399.7L720.2,395C719.4,394.6 719,393.5 719.3,392.7C719.5,391.8 720.3,391.5 721.1,391.9L729.3,396.6C730.1,397.1 730.5,398.1 730.2,399C730,399.8 729.1,400.2 728.4,399.7Z"
+      android:fillColor="#ffffff"/>
+  <path
+      android:pathData="M736.1,404.2L735.8,404C735,403.6 734.6,402.5 734.9,401.7C735.2,400.8 736,400.5 736.7,400.9L737,401.1C737.7,401.5 738.2,402.6 737.9,403.4C737.6,404.3 736.8,404.6 736.1,404.2Z"
+      android:fillColor="#F8359E"/>
+</vector>
