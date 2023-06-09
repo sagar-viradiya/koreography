@@ -41,5 +41,5 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 private fun MainScreen() {
-    MeditationAnimation()
+    FloatingMachineAnimation()
 }

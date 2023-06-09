@@ -1,0 +1,38 @@
+<!--
+  ~ Copyright 2022 Koreography Contributors
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="1080dp"
+    android:height="1080dp"
+    android:viewportWidth="1080"
+    android:viewportHeight="1080">
+  <path
+      android:pathData="M888.8,697.8C888.6,697.7 888.5,697.4 888.5,697.3C888.5,697.1 888.6,696.9 888.8,696.7L913.6,682.4C915.2,681.5 917.1,681 918.9,681C920.8,681 922.7,681.5 924.3,682.4L949,696.7C949.3,696.9 949.4,697.1 949.4,697.3C949.4,697.4 949.3,697.7 949,697.8L924.3,712.1C921,714 916.9,714 913.6,712.1H913.6L888.8,697.8ZM911.6,679L886.9,693.3C885.4,694.1 884.6,695.6 884.6,697.3C884.6,698.9 885.4,700.4 886.9,701.2L911.6,715.5C913.9,716.8 916.4,717.5 918.9,717.5C921.5,717.5 924,716.8 926.3,715.5L951,701.2C952.4,700.4 953.3,698.9 953.3,697.3C953.3,695.6 952.4,694.1 951,693.3L926.3,679C924,677.7 921.5,677.1 918.9,677.1C916.4,677.1 913.9,677.7 911.6,679Z">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startX="884.9"
+          android:startY="697.2"
+          android:endX="953.6"
+          android:endY="697.5"
+          android:type="linear">
+        <item android:offset="0" android:color="#FFE29A65"/>
+        <item android:offset="0.5" android:color="#FFE67C79"/>
+        <item android:offset="1" android:color="#FFE95F8D"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+</vector>
