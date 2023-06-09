@@ -1,0 +1,38 @@
+<!--
+  ~ Copyright 2022 Koreography Contributors
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="1080dp"
+    android:height="1080dp"
+    android:viewportWidth="1080"
+    android:viewportHeight="1080">
+  <path
+      android:pathData="M299,510.8L240.5,477.1C239.2,476.3 238.4,474.9 238.4,473.4C238.4,471.8 239.2,470.4 240.5,469.6L299,435.9C307.7,430.9 318.4,430.9 327.1,435.9L385.6,469.6C386.9,470.4 387.7,471.8 387.7,473.4C387.7,474.9 386.9,476.3 385.6,477.1L327.1,510.8C322.8,513.3 317.9,514.6 313.1,514.6C308.2,514.6 303.3,513.3 299,510.8ZM297.1,432.6L238.6,466.4C236.1,467.8 234.6,470.4 234.6,473.4C234.6,476.3 236.1,478.9 238.6,480.4L297.1,514.1C302,517 307.5,518.4 313.1,518.4C318.6,518.4 324.1,517 329,514.1L387.5,480.4C390,478.9 391.5,476.3 391.5,473.4C391.5,470.4 390,467.8 387.5,466.4L329,432.6C324.1,429.8 318.6,428.3 313.1,428.3C307.5,428.3 302,429.8 297.1,432.6Z">
+    <aapt:attr name="android:fillColor">
+      <gradient
+          android:startX="238.1"
+          android:startY="474"
+          android:endX="391.3"
+          android:endY="474.1"
+          android:type="linear">
+        <item android:offset="0" android:color="#FFE29A65"/>
+        <item android:offset="0.5" android:color="#FFE67C79"/>
+        <item android:offset="1" android:color="#FFE95F8D"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+</vector>
