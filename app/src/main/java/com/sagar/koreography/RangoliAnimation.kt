@@ -19,13 +19,12 @@ package com.sagar.koreography
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
@@ -63,14 +62,11 @@ fun RangoliAnimation() {
             move(rotationLayer1, -90f, animationSpec = tween(durationMillis = 500))
         }
     }
-    val coroutineScope = rememberCoroutineScope()
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .clickable {
-                koreography.danceForever(coroutineScope)
-            }
     ) {
         Image(
             modifier = Modifier.align(Alignment.Center),
@@ -98,5 +94,9 @@ fun RangoliAnimation() {
             painter = painterResource(id = R.drawable.rangoli_layer_3),
             contentDescription = null
         )
+    }
+
+    LaunchedEffect(true) {
+        koreography.danceForever(this)
     }
 }
