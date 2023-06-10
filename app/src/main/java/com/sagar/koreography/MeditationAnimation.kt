@@ -17,17 +17,19 @@
 package com.sagar.koreography
 
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -42,31 +44,22 @@ fun MeditationAnimation() {
     val scaleShadow = remember { Animatable(1f) }
     val koreography = rememberKoreography {
         parallelMoves {
-            move(animatable = offsetYMeditation, targetValue = -160f, animationSpec = tween(2000))
+            move(animatable = offsetYMeditation, targetValue = -160f, animationSpec = infiniteRepeatable(animation = tween(1500), repeatMode = RepeatMode.Reverse) )
             move(
                 animatable = offsetYMeditationAura,
                 targetValue = -80f,
-                animationSpec = tween(2000)
+                animationSpec = infiniteRepeatable(animation = tween(1500), repeatMode = RepeatMode.Reverse)
             )
-            move(animatable = scaleAura, targetValue = 1.2f, animationSpec = tween(2000))
-            move(animatable = scaleShadow, targetValue = 0.5f, animationSpec = tween(2000))
-        }
-        parallelMoves {
-            move(animatable = offsetYMeditation, targetValue = 160f, animationSpec = tween(2000))
-            move(animatable = offsetYMeditationAura, targetValue = 80f, animationSpec = tween(2000))
-            move(animatable = scaleAura, targetValue = 0.8f, animationSpec = tween(2000))
-            move(animatable = scaleShadow, targetValue = 1.2f, animationSpec = tween(2000))
+            move(animatable = scaleAura, targetValue = 1.2f, animationSpec = infiniteRepeatable(animation = tween(1500), repeatMode = RepeatMode.Reverse))
+            move(animatable = scaleShadow, targetValue = 0.5f, animationSpec = infiniteRepeatable(animation = tween(1500), repeatMode = RepeatMode.Reverse))
         }
     }
-    val coroutineScope = rememberCoroutineScope()
+
     Box(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
-            .clickable { koreography.danceForever(coroutineScope) }
     ) {
-
-
         Image(
             painter = painterResource(R.drawable.meditation_aura),
             modifier = Modifier
@@ -86,6 +79,7 @@ fun MeditationAnimation() {
                 .align(Alignment.Center)
                 .graphicsLayer {
                     scaleX = scaleShadow.value
+                    transformOrigin = TransformOrigin(0.5f, 0.8f)
                 },
             contentDescription = null,
             contentScale = ContentScale.Crop
@@ -101,5 +95,9 @@ fun MeditationAnimation() {
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
+    }
+
+    LaunchedEffect(true) {
+        koreography.danceForever(this)
     }
 }

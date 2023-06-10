@@ -19,7 +19,6 @@ package com.sagar.koreography
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,8 +26,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.TransformOrigin
@@ -130,15 +129,10 @@ fun LoadingAnimation() {
         }
     }
 
-    val coroutineScope = rememberCoroutineScope()
-
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
-            .clickable {
-                koreography.danceForever(coroutineScope)
-            },
     ) {
         Box(
             modifier = Modifier
@@ -178,5 +172,9 @@ fun LoadingAnimation() {
                     }
             )
         }
+    }
+
+    LaunchedEffect(true) {
+        koreography.danceForever(this)
     }
 }
