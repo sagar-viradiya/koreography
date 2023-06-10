@@ -25,13 +25,12 @@ import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TransformOrigin
@@ -95,7 +94,7 @@ fun FloatingMachineAnimation() {
         Animatable(0f)
     }
 
-    val koreography = rememberKoreography {
+    val translationScaleKoreography = rememberKoreography {
         parallelMoves {
             move(
                 animatable = squareScale,
@@ -121,57 +120,60 @@ fun FloatingMachineAnimation() {
                     repeatMode = RepeatMode.Reverse
                 )
             )
-            sequentialMoves {
-                move(animatable = key7Alpha, targetValue = 1f, animationSpec = tween(150))
-                move(animatable = key7Alpha, targetValue = 0f, animationSpec = tween(150))
-                move(animatable = key7Alpha, targetValue = 1f, animationSpec = tween(150))
-                move(animatable = key7Alpha, targetValue = 0f, animationSpec = tween(150))
-                move(
-                    animatable = codePanelScale,
-                    targetValue = 1f,
-                    animationSpec = spring(
-                        stiffness = Spring.StiffnessLow,
-                        dampingRatio = Spring.DampingRatioMediumBouncy
-                    )
-                )
-                move(animatable = key1Alpha, targetValue = 1f, animationSpec = tween(150))
-                move(animatable = key1Alpha, targetValue = 0f, animationSpec = tween(150))
-                move(animatable = key2Alpha, targetValue = 1f, animationSpec = tween(150))
-                move(animatable = key2Alpha, targetValue = 0f, animationSpec = tween(150))
-                move(animatable = key1Alpha, targetValue = 1f, animationSpec = tween(150))
-                move(animatable = key1Alpha, targetValue = 0f, animationSpec = tween(150))
-                move(animatable = key1Alpha, targetValue = 1f, animationSpec = tween(150))
-                move(animatable = key1Alpha, targetValue = 0f, animationSpec = tween(150))
-                move(animatable = key4Alpha, targetValue = 1f, animationSpec = tween(150))
-                move(animatable = key4Alpha, targetValue = 0f, animationSpec = tween(150))
-                move(animatable = key3Alpha, targetValue = 1f, animationSpec = tween(150))
-                move(animatable = key3Alpha, targetValue = 0f, animationSpec = tween(150))
-                move(animatable = key1Alpha, targetValue = 1f, animationSpec = tween(150))
-                move(animatable = key1Alpha, targetValue = 0f, animationSpec = tween(150))
-                move(animatable = code2Alpha, targetValue = 1f, animationSpec = tween(250))
-                move(animatable = key5Alpha, targetValue = 1f, animationSpec = tween(150))
-                move(animatable = key5Alpha, targetValue = 0f, animationSpec = tween(150))
-                move(animatable = key7Alpha, targetValue = 1f, animationSpec = tween(150))
-                move(animatable = key7Alpha, targetValue = 0f, animationSpec = tween(150))
-                move(animatable = key5Alpha, targetValue = 1f, animationSpec = tween(150))
-                move(animatable = key5Alpha, targetValue = 0f, animationSpec = tween(150))
-                move(animatable = key6Alpha, targetValue = 1f, animationSpec = tween(150))
-                move(animatable = key6Alpha, targetValue = 0f, animationSpec = tween(150))
-                move(animatable = code1Alpha, targetValue = 1f, animationSpec = tween(250))
-            }
         }
     }
 
-    val coroutineScope = rememberCoroutineScope()
+    val typingKoreography = rememberKoreography {
+        move(animatable = key7Alpha, targetValue = 1f, animationSpec = tween(150))
+        move(animatable = key7Alpha, targetValue = 0f, animationSpec = tween(150))
+        move(animatable = key7Alpha, targetValue = 1f, animationSpec = tween(150))
+        move(animatable = key7Alpha, targetValue = 0f, animationSpec = tween(150))
+        move(
+            animatable = codePanelScale,
+            targetValue = 1f,
+            animationSpec = spring(
+                stiffness = Spring.StiffnessLow,
+                dampingRatio = Spring.DampingRatioMediumBouncy
+            )
+        )
+        move(animatable = key1Alpha, targetValue = 1f, animationSpec = tween(150))
+        move(animatable = key1Alpha, targetValue = 0f, animationSpec = tween(150))
+        move(animatable = key2Alpha, targetValue = 1f, animationSpec = tween(150))
+        move(animatable = key2Alpha, targetValue = 0f, animationSpec = tween(150))
+        move(animatable = key1Alpha, targetValue = 1f, animationSpec = tween(150))
+        move(animatable = key1Alpha, targetValue = 0f, animationSpec = tween(150))
+        move(animatable = key1Alpha, targetValue = 1f, animationSpec = tween(150))
+        move(animatable = key1Alpha, targetValue = 0f, animationSpec = tween(150))
+        move(animatable = key4Alpha, targetValue = 1f, animationSpec = tween(150))
+        move(animatable = key4Alpha, targetValue = 0f, animationSpec = tween(150))
+        move(animatable = key3Alpha, targetValue = 1f, animationSpec = tween(150))
+        move(animatable = key3Alpha, targetValue = 0f, animationSpec = tween(150))
+        move(animatable = key1Alpha, targetValue = 1f, animationSpec = tween(150))
+        move(animatable = key1Alpha, targetValue = 0f, animationSpec = tween(150))
+        move(animatable = code2Alpha, targetValue = 1f, animationSpec = tween(250))
+        move(animatable = key5Alpha, targetValue = 1f, animationSpec = tween(150))
+        move(animatable = key5Alpha, targetValue = 0f, animationSpec = tween(150))
+        move(animatable = key7Alpha, targetValue = 1f, animationSpec = tween(150))
+        move(animatable = key7Alpha, targetValue = 0f, animationSpec = tween(150))
+        move(animatable = key5Alpha, targetValue = 1f, animationSpec = tween(150))
+        move(animatable = key5Alpha, targetValue = 0f, animationSpec = tween(150))
+        move(animatable = key6Alpha, targetValue = 1f, animationSpec = tween(150))
+        move(animatable = key6Alpha, targetValue = 0f, animationSpec = tween(150))
+        move(animatable = code1Alpha, targetValue = 1f, animationSpec = tween(250))
+        move(animatable = code2Alpha, targetValue = 0f, animationSpec = tween(500))
+        move(animatable = code1Alpha, targetValue = 0f, animationSpec = tween(500))
+        move(
+            animatable = codePanelScale,
+            targetValue = 0f,
+            animationSpec = tween(durationMillis = 500)
+        )
+    }
 
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
             .background(color = Color(0xFF311094))
-            .clickable {
-                koreography.danceForever(coroutineScope)
-            }
     ) {
         Image(modifier = Modifier.graphicsLayer {
             scaleY = squareScale.value
@@ -274,5 +276,11 @@ fun FloatingMachineAnimation() {
             painter = painterResource(id = R.drawable.laptop_code_panel_2),
             contentDescription = null
         )
+    }
+
+    // Start the koreography
+    LaunchedEffect(true) {
+        translationScaleKoreography.dance(this)
+        typingKoreography.danceForever(this)
     }
 }
