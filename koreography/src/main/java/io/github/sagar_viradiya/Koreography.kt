@@ -76,11 +76,11 @@ class Koreography<T, V : AnimationVector> {
         job = scope.launch {
             if (count == POSITIVE_INFINITY) {
                 while (true) {
-                    startDance(this)
+                    resetAndStartDance(this)
                 }
             } else {
                 repeat(count as Int) {
-                    startDance(this)
+                    resetAndStartDance(this)
                 }
                 onDanceFinished()
             }
