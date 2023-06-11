@@ -27,6 +27,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -341,12 +343,13 @@ fun NFCAnimation() {
         }
     }
 
-    Column(
+    Card(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
+            .fillMaxWidth(),
+        shape = RoundedCornerShape(16.dp),
+        elevation = 16.dp
     ) {
-        Box(modifier = Modifier.fillMaxWidth()) {
+        Box(modifier = Modifier.fillMaxWidth().padding(64.dp)) {
             Image(
                 painter = painterResource(R.drawable.card),
                 contentDescription = null,

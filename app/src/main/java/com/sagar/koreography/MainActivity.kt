@@ -19,11 +19,14 @@ package com.sagar.koreography
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +42,25 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun MainScreen() {
-    SatelliteAnimation()
+
+    Box {
+        HorizontalPager(
+            modifier = Modifier.fillMaxSize(),
+            pageCount = 6,
+            contentPadding = PaddingValues(16.dp),
+            pageSpacing = 16.dp
+        ) { pageNumber ->
+            when(pageNumber) {
+                0 -> FloatingMachineAnimation()
+                1 -> NFCAnimation()
+                2 -> LoadingAnimation()
+                3 -> SatelliteAnimation()
+                4 -> MeditationAnimation()
+                5 -> RangoliAnimation()
+            }
+        }
+    }
 }
