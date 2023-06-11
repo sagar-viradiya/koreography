@@ -7,63 +7,69 @@ _Choreograph your Compose Animation 💃🕺_
 [![Twitter Follow](https://img.shields.io/twitter/follow/viradiya_sagar?label=Follow&style=social)](https://twitter.com/viradiya_sagar)
 
 <br>
-A lightweight Compose Animation utility library to choreograph low-level Animation API (https://developer.android.com/jetpack/compose/animation#animation) through Kotlin DSL. It does the heavy lifting of dealing with coroutines under the hood so that you can focus on your animation choreography.
+A lightweight Compose Animation utility library to choreograph low-level [Animation API](https://developer.android.com/jetpack/compose/animation#animation) through Kotlin DSL. It does the heavy lifting of dealing with coroutines under the hood so that you can focus on your animation choreography.
 
 ## Including in your project
 Koreography is available on `mavenCentral()`
 
 ```groovy
-implementation 'io.github.sagar-viradiya:koreography:0.2.0'
+implementation 'io.github.sagar-viradiya:koreography:0.3.0'
 ```
 
 ## Usage
 
-Creating koreography is the process of recording moves that can be either parallel or sequential. You can declare complex choreography through clean and concise Kotlin DSL. 
+Creating choreography is the process of recording moves on [Animatable](https://developer.android.com/jetpack/compose/animation/value-based#animatable), A low level compose animation API. Moves could be either parallel or sequential. A choreography is a compostion of such moves that you can declare through clean and concise Kotlin DSL as shown below. 
 
 ### Choreographying sequential animation
 
 ```kotlin
+val alphaAnimatable = remember {
+    Animatable(0f)
+}
+
+val scaleAnimatable = remember {
+    Animatable(0f)
+}
+
 val koreography = rememberKoreography {
     move(
-        initialValue = 0f,
+        animatable = alphaAnimatable,
         targetValue = 1f,
         animationSpec = tween(500)
-    ) { value, velocity ->
-        // Update the state value used for animation here
-    }
+    )
     
     move(
-        initialValue = 0f,
+        animatable = scaleAnimatable,
         targetValue = 2f,
         animationSpec = tween(500)
-    ) { value, velocity ->
-        // Update the state value used for animation here
-    }
+    )
 }
 ```
-
-> The `move` call is identical to `animate` suspend function of compose except it is not suspend function since, creating koregraphy is just a process of recording moves
 
 ### Choreographying parallel animation
 
 ```kotlin
+val alphaAnimatable = remember {
+    Animatable(0f)
+}
+
+val scaleAnimatable = remember {
+    Animatable(0f)
+}
+
 val koreography = rememberKoreography {
     parallelMoves {
         move(
-            initialValue = 0f,
+            animatable = alphaAnimatable,
             targetValue = 1f,
             animationSpec = tween(500)
-        ) { value, velocity ->
-            // Update the state value used for animation here
-        }
+        )
         
         move(
-            initialValue = 0f,
+            animatable = scaleAnimatable,
             targetValue = 2f,
             animationSpec = tween(500)
-        ) { value, velocity ->
-            // Update the state value used for animation here
-        }
+        )
     }
 }
 ```
@@ -72,142 +78,132 @@ val koreography = rememberKoreography {
 You can have a nested hierarchy of moves to create complex choreography. The example below has three animations running parallelly and out of them, the last one has two animations within running sequentially.
 
 ```kotlin
+val alphaAnimatable = remember {
+    Animatable(0f)
+}
+
+val scaleAnimatable = remember {
+    Animatable(0f)
+}
+
+val rotationAnimatable = remember {
+    Animatable(0f)
+}
+
+val translationXAnimatable = remember {
+    Animatble(0f)
+}
+
 val koreography = rememberKoreography {
     parallelMoves {
         move(
-            initialValue = 0f,
+            animatable = alphaAnimatable,
             targetValue = 1f,
             animationSpec = tween(500)
-        ) { value, velocity ->
-            // Update the state value used for animation here
-        }
+        )
         
         move(
-            initialValue = 0f,
+            animatable = scaleAnimatable,
             targetValue = 2f,
             animationSpec = tween(500)
-        ) { value, velocity ->
-            // Update the state value used for animation here
-        }
+        )
         
         sequentialMoves {
             move(
-                initialValue = 0f,
-                targetValue = 1f,
+                animatable = rotationAnimatable,
+                targetValue = 20f,
                 animationSpec = tween(500)
-            ) { value, velocity ->
-                // Update the state value used for animation here
-            }
+            )
             
             move(
-                initialValue = 0f,
-                targetValue = 2f,
+                animatable = translationXAnimatable,
+                targetValue = 200f,
                 animationSpec = tween(500)
-            ) { value, velocity ->
-                // Update the state value used for animation here
-            }
+            )
         }
     }
 }
 ``` 
 
-### Executing koreography outside composable scope
+### Executing choreography
 
-Once `Koreography` is ready it's time to dance! 💃🕺.
+Once choreography is ready it's time to dance! 💃🕺.
 
-You can execute the choreography outside the composable scope (button click) by calling `dance` function.
+#### One time dance
+
+You can execute the choreography once by calling `dance` function. If you wish to get callback after execution of choreography then you can pass trailing lambda.
 
 ```kotlin
-koreography.dance(coroutineScope)
+koreography.dance(scope = coroutineScope) {
+    // onDanceFinished : Optional trailing lambda
+}
+```
+
+#### Repeat dance
+
+You can execute the choreography multiple times by calling `repeatDance` function. Following call executes choreography three times.
+
+```kotlin
+koreography.repeatDance(count = 3, scope = coroutineScope) {
+    // onDanceFinished : Optional trailing lambda
+}
+```
+
+#### Inifinite dance
+
+You can execute the choreography forever until composition is alive.
+
+```kotlin
+koreography.danceForever(scope = coroutineScope){
+    // onDanceFinished : Optional trailing lambda
+}
 ```
 
 > Please note the `coroutineScope` should be obtained through `rememberCoroutineScope()`. Make sure you pass coroutine scope which will get cleared once you exit composition.
 
-### Executing koreography based on state change 🚀
+### Executing choreography based on state change 🚀
 
 Executing choreography based on state change is also supported. This API is similar to [`LaunchedEffect`](https://developer.android.com/jetpack/compose/side-effects#launchedeffect) API of compose side effects.
 
 ```kotlin
+val alphaAnimatable = remember {
+    Animatable(0f)
+}
+
+val scaleAnimatable = remember {
+    Animatable(0f)
+}
+
 LaunchKoreography(state) {
     move(
-        initialValue = 0f,
+        animatbale = alphaAnimatable,
         targetValue = 1f,
         animationSpec = tween(500)
-    ) { value, velocity ->
-        // Update the state value used for animation here
-    }
+    )
     
     move(
-        initialValue = 0f,
+        animatbale = scaleAnimatable,
         targetValue = 2f,
         animationSpec = tween(500)
-    ) { value, velocity ->
-        // Update the state value used for animation here
-    }
+    )
 }
 ```
 
 The choreography passed in the trailing lambda above would be executed on every `state` change.
 
-### Example 1
-The following example consists of two animations running sequentially having two parallel animations (Scale + Fade) within each. The first animation fades in alpha value and scales up the image. The second fade out and scale the image.
+### Samples
 
-https://user-images.githubusercontent.com/11586051/190523592-692c400f-cec6-48ea-9e0e-f641415bc25f.mp4
+There is endless possibilities with power of coroutines and compose animation API! Here are some free lottie animations recreated using koreography. You can find the source code in the sample app.
 
-```kotlin
-// Composable scope
+https://github.com/sagar-viradiya/koreography/assets/11586051/54c80649-f1b7-454e-a8d2-5ca56ffb4ccc
 
-var alpha by remember { mutableStateOf(0f) }
-var scale by remember { mutableStateOf(0f) }
+https://github.com/sagar-viradiya/koreography/assets/11586051/75b5c527-34c4-4552-a6a3-8480766fb88e
 
-val koreography = rememberKoreography {
-    parallelMoves {
-        move(
-            initialValue = 0f,
-            targetValue = 1f,
-            animationSpec = tween(500)
-        ) { value, _ ->
-            alpha = value
-        }
-        
-        move(
-            initialValue = 0f,
-            targetValue = 2f,
-            animationSpec = tween(500)
-        ) { value, _ ->
-            scale = value
-        }
-    }
-    
-    parallelMoves {
-        move(
-            initialValue = 1f,
-            targetValue = 0f,
-            animationSpec = tween(500)
-        ) { value, _ ->
-            alpha = value
-        }
-        
-        move(
-            initialValue = 2f,
-            targetValue = 4f,
-            animationSpec = tween(500)
-        ) { value, _ ->
-            scale = value
-        }
-    }
-}
+https://github.com/sagar-viradiya/koreography/assets/11586051/f57ca6f9-e1eb-4e9d-883a-bd8203e81441
 
-koreography.dance(rememberCoroutineScope())
-```
+https://github.com/sagar-viradiya/koreography/assets/11586051/766f23f1-f21b-4353-91b8-437672e756aa
 
-### Example 2
-
-The following animation consists of two animations running sequentially. Each has three animations running parallelly (Scale + Rotate + Fade) 
-
-https://user-images.githubusercontent.com/11586051/190526868-9b539423-9240-4f1c-a230-a79c1d0a94e0.mp4
-
-The code for choreographing above animation is there in the sample app.
+https://github.com/sagar-viradiya/koreography/assets/11586051/8cdcf0ab-988f-4dde-92e9-cd5a20490bf6
 
 ## Contribution
 
