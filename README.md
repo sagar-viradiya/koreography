@@ -149,7 +149,7 @@ koreography.repeatDance(count = 3, scope = coroutineScope) {
 }
 ```
 
-#### Inifinite dance
+#### Infinite dance
 
 You can execute the choreography forever until composition is alive.
 
