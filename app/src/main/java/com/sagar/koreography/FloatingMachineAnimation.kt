@@ -24,13 +24,15 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TransformOrigin
@@ -169,114 +171,119 @@ fun FloatingMachineAnimation() {
         )
     }
 
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-            .background(color = Color(0xFF311094))
-    ) {
-        Image(modifier = Modifier.graphicsLayer {
-            scaleY = squareScale.value
-            scaleX = squareScale.value
-            transformOrigin = TransformOrigin(0.125f, 0.65f)
-        }, painter = painterResource(id = R.drawable.laptop_square_1), contentDescription = null)
-        Image(modifier = Modifier.graphicsLayer {
-            scaleY = squareScale.value
-            scaleX = squareScale.value
-            transformOrigin = TransformOrigin(0.25f, 0.5f)
-        }, painter = painterResource(id = R.drawable.laptop_square_2), contentDescription = null)
-        Image(modifier = Modifier.graphicsLayer {
-            scaleY = squareScale.value
-            scaleX = squareScale.value
-            transformOrigin = TransformOrigin(0.5f, 0.6f)
-        }, painter = painterResource(id = R.drawable.laptop_square_3), contentDescription = null)
-        Image(modifier = Modifier.graphicsLayer {
-            scaleY = squareScale.value
-            scaleX = squareScale.value
-            transformOrigin = TransformOrigin(0.75f, 0.65f)
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth(),
+            shape = RoundedCornerShape(16.dp),
+            elevation = 16.dp,
+            backgroundColor = Color(0xFF311094)
+        ) {
 
-        }, painter = painterResource(id = R.drawable.laptop_square_4), contentDescription = null)
-        Image(modifier = Modifier.graphicsLayer {
-            scaleY = squareScale.value
-            scaleX = squareScale.value
-            transformOrigin = TransformOrigin(0.8f, 0.7f)
+            Image(modifier = Modifier.graphicsLayer {
+                scaleY = squareScale.value
+                scaleX = squareScale.value
+                transformOrigin = TransformOrigin(0.125f, 0.65f)
+            }, painter = painterResource(id = R.drawable.laptop_square_1), contentDescription = null)
+            Image(modifier = Modifier.graphicsLayer {
+                scaleY = squareScale.value
+                scaleX = squareScale.value
+                transformOrigin = TransformOrigin(0.25f, 0.5f)
+            }, painter = painterResource(id = R.drawable.laptop_square_2), contentDescription = null)
+            Image(modifier = Modifier.graphicsLayer {
+                scaleY = squareScale.value
+                scaleX = squareScale.value
+                transformOrigin = TransformOrigin(0.5f, 0.6f)
+            }, painter = painterResource(id = R.drawable.laptop_square_3), contentDescription = null)
+            Image(modifier = Modifier.graphicsLayer {
+                scaleY = squareScale.value
+                scaleX = squareScale.value
+                transformOrigin = TransformOrigin(0.75f, 0.65f)
 
-        }, painter = painterResource(id = R.drawable.laptop_square_5), contentDescription = null)
-        Image(modifier = Modifier.graphicsLayer {
-            scaleY = shadowScale.value
-            scaleX = shadowScale.value
-            transformOrigin = TransformOrigin(0.5f, 0.6f)
-        }, painter = painterResource(id = R.drawable.laptop_shadow), contentDescription = null)
-        Image(modifier = Modifier.graphicsLayer {
-            translationY = laptopTranslationY.value
-        }, painter = painterResource(id = R.drawable.laptop), contentDescription = null)
-        Image(modifier = Modifier.graphicsLayer {
-            translationY = laptopTranslationY.value
-            scaleX = codePanelScale.value
-            scaleY = codePanelScale.value
-            transformOrigin = TransformOrigin(0.6f, 0.4f)
-        }, painter = painterResource(id = R.drawable.laptop_code_panel), contentDescription = null)
-        Image(
-            modifier = Modifier.graphicsLayer {
+            }, painter = painterResource(id = R.drawable.laptop_square_4), contentDescription = null)
+            Image(modifier = Modifier.graphicsLayer {
+                scaleY = squareScale.value
+                scaleX = squareScale.value
+                transformOrigin = TransformOrigin(0.8f, 0.7f)
+
+            }, painter = painterResource(id = R.drawable.laptop_square_5), contentDescription = null)
+            Image(modifier = Modifier.graphicsLayer {
                 scaleY = shadowScale.value
                 scaleX = shadowScale.value
-                transformOrigin = TransformOrigin(0.25f, 0.5f)
-            },
-            painter = painterResource(id = R.drawable.laptop_coffee_mug_shadow),
-            contentDescription = null
-        )
-        Image(
-            modifier = Modifier.graphicsLayer {
+                transformOrigin = TransformOrigin(0.5f, 0.6f)
+            }, painter = painterResource(id = R.drawable.laptop_shadow), contentDescription = null)
+            Image(modifier = Modifier.graphicsLayer {
                 translationY = laptopTranslationY.value
-            },
-            painter = painterResource(id = R.drawable.laptop_coffee_mug),
-            contentDescription = null
-        )
-        Image(modifier = Modifier.graphicsLayer {
-            translationY = laptopTranslationY.value
-            alpha = key1Alpha.value
-        }, painter = painterResource(id = R.drawable.laptop_key_1), contentDescription = null)
-        Image(modifier = Modifier.graphicsLayer {
-            translationY = laptopTranslationY.value
-            alpha = key2Alpha.value
-        }, painter = painterResource(id = R.drawable.laptop_key_2), contentDescription = null)
-        Image(modifier = Modifier.graphicsLayer {
-            translationY = laptopTranslationY.value
-            alpha = key3Alpha.value
-        }, painter = painterResource(id = R.drawable.laptop_key_3), contentDescription = null)
-        Image(modifier = Modifier.graphicsLayer {
-            translationY = laptopTranslationY.value
-            alpha = key4Alpha.value
-        }, painter = painterResource(id = R.drawable.laptop_key_4), contentDescription = null)
-        Image(modifier = Modifier.graphicsLayer {
-            translationY = laptopTranslationY.value
-            alpha = key5Alpha.value
-        }, painter = painterResource(id = R.drawable.laptop_key_5), contentDescription = null)
-        Image(modifier = Modifier.graphicsLayer {
-            translationY = laptopTranslationY.value
-            alpha = key6Alpha.value
-        }, painter = painterResource(id = R.drawable.laptop_key_6), contentDescription = null)
-        Image(modifier = Modifier.graphicsLayer {
-            translationY = laptopTranslationY.value
-            alpha = key7Alpha.value
-        }, painter = painterResource(id = R.drawable.laptop_key_7), contentDescription = null)
-        Image(
-            modifier = Modifier.graphicsLayer {
+            }, painter = painterResource(id = R.drawable.laptop), contentDescription = null)
+            Image(modifier = Modifier.graphicsLayer {
                 translationY = laptopTranslationY.value
-                alpha = code1Alpha.value
-            },
-            painter = painterResource(id = R.drawable.laptop_code_panel_1),
-            contentDescription = null
-        )
-        Image(
-            modifier = Modifier.graphicsLayer {
-                alpha = code2Alpha.value
+                scaleX = codePanelScale.value
+                scaleY = codePanelScale.value
+                transformOrigin = TransformOrigin(0.6f, 0.4f)
+            }, painter = painterResource(id = R.drawable.laptop_code_panel), contentDescription = null)
+            Image(
+                modifier = Modifier.graphicsLayer {
+                    scaleY = shadowScale.value
+                    scaleX = shadowScale.value
+                    transformOrigin = TransformOrigin(0.25f, 0.5f)
+                },
+                painter = painterResource(id = R.drawable.laptop_coffee_mug_shadow),
+                contentDescription = null
+            )
+            Image(
+                modifier = Modifier.graphicsLayer {
+                    translationY = laptopTranslationY.value
+                },
+                painter = painterResource(id = R.drawable.laptop_coffee_mug),
+                contentDescription = null
+            )
+            Image(modifier = Modifier.graphicsLayer {
                 translationY = laptopTranslationY.value
-            },
-            painter = painterResource(id = R.drawable.laptop_code_panel_2),
-            contentDescription = null
-        )
+                alpha = key1Alpha.value
+            }, painter = painterResource(id = R.drawable.laptop_key_1), contentDescription = null)
+            Image(modifier = Modifier.graphicsLayer {
+                translationY = laptopTranslationY.value
+                alpha = key2Alpha.value
+            }, painter = painterResource(id = R.drawable.laptop_key_2), contentDescription = null)
+            Image(modifier = Modifier.graphicsLayer {
+                translationY = laptopTranslationY.value
+                alpha = key3Alpha.value
+            }, painter = painterResource(id = R.drawable.laptop_key_3), contentDescription = null)
+            Image(modifier = Modifier.graphicsLayer {
+                translationY = laptopTranslationY.value
+                alpha = key4Alpha.value
+            }, painter = painterResource(id = R.drawable.laptop_key_4), contentDescription = null)
+            Image(modifier = Modifier.graphicsLayer {
+                translationY = laptopTranslationY.value
+                alpha = key5Alpha.value
+            }, painter = painterResource(id = R.drawable.laptop_key_5), contentDescription = null)
+            Image(modifier = Modifier.graphicsLayer {
+                translationY = laptopTranslationY.value
+                alpha = key6Alpha.value
+            }, painter = painterResource(id = R.drawable.laptop_key_6), contentDescription = null)
+            Image(modifier = Modifier.graphicsLayer {
+                translationY = laptopTranslationY.value
+                alpha = key7Alpha.value
+            }, painter = painterResource(id = R.drawable.laptop_key_7), contentDescription = null)
+            Image(
+                modifier = Modifier.graphicsLayer {
+                    translationY = laptopTranslationY.value
+                    alpha = code1Alpha.value
+                },
+                painter = painterResource(id = R.drawable.laptop_code_panel_1),
+                contentDescription = null
+            )
+            Image(
+                modifier = Modifier.graphicsLayer {
+                    alpha = code2Alpha.value
+                    translationY = laptopTranslationY.value
+                },
+                painter = painterResource(id = R.drawable.laptop_code_panel_2),
+                contentDescription = null
+            )
+        }
     }
+
 
     // Start the koreography
     LaunchedEffect(true) {

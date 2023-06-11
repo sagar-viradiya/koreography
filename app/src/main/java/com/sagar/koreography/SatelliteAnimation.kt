@@ -28,9 +28,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -74,51 +77,60 @@ fun SatelliteAnimation() {
             )
         }
     }
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-    ) {
-        val path = remember {
-            Path()
-        }
-        val points = remember {
-            parse()
-        }
-        Image(
-            modifier = Modifier.graphicsLayer {
-                translationY = translateY.value
-            },
-            painter = painterResource(id = R.drawable.planet),
-            contentDescription = null
-        )
 
-        Canvas(modifier = Modifier
-            .fillMaxSize()
-            .graphicsLayer {
-                translationY = translateY.value
-            }) {
-            val firstPoint = points.first()
-            path.moveTo(firstPoint.x, firstPoint.y)
-            for (i in 1 until points.size) {
-                path.lineTo(points[i].x, points[i].y)
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(16.dp),
+            elevation = 16.dp,
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                val path = remember {
+                    Path()
+                }
+                val points = remember {
+                    parse()
+                }
+                Image(
+                    modifier = Modifier.graphicsLayer {
+                        translationY = translateY.value
+                    },
+                    painter = painterResource(id = R.drawable.planet),
+                    contentDescription = null
+                )
+
+                Canvas(modifier = Modifier
+                    .fillMaxWidth()
+                    .graphicsLayer {
+                        translationY = translateY.value
+                    }) {
+                    val firstPoint = points.first()
+                    path.moveTo(firstPoint.x, firstPoint.y)
+                    for (i in 1 until points.size) {
+                        path.lineTo(points[i].x, points[i].y)
+                    }
+                    val stroke = Stroke(
+                        width = 5f,
+                        pathEffect = PathEffect.dashPathEffect(floatArrayOf(15f, 20f), 0f)
+                    )
+
+                    drawPath(path = path, style = stroke, color = Color.Black)
+                }
+                Image(
+                    modifier = Modifier.graphicsLayer {
+                        val point = points[endIndex.value.toInt()]
+                        translationX = point.x - (57.dp.toPx())
+                        translationY = point.y - (57.dp.toPx()) + translateY.value
+                    },
+                    painter = painterResource(id = R.drawable.rocket),
+                    contentDescription = null
+                )
             }
-            val stroke = Stroke(
-                width = 5f,
-                pathEffect = PathEffect.dashPathEffect(floatArrayOf(15f, 20f), 0f)
-            )
-
-            drawPath(path = path, style = stroke, color = Color.Black)
         }
-        Image(
-            modifier = Modifier.graphicsLayer {
-                val point = points[endIndex.value.toInt()]
-                translationX = point.x - (57.dp.toPx())
-                translationY = point.y - (57.dp.toPx()) + translateY.value
-            },
-            painter = painterResource(id = R.drawable.rocket),
-            contentDescription = null
-        )
     }
 
     LaunchedEffect(true) {
