@@ -1,0 +1,27 @@
+<!--
+  ~ Copyright 2022 Koreography Contributors
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="1080dp"
+    android:height="1080dp"
+    android:viewportWidth="1080"
+    android:viewportHeight="1080">
+
+  <path
+      android:pathData="M590.9,581.2L581.6,575.7C580.8,575.3 580.9,574.6 581.8,574.1L591,568.7C591.9,568.2 593.2,568.1 594,568.6L603.3,574C604.1,574.4 604,575.2 603.1,575.7L593.9,581C593,581.5 591.7,581.6 590.9,581.2Z"
+      android:fillColor="#EB7D43" />
+
+</vector>

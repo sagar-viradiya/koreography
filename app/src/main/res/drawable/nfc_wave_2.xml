@@ -1,0 +1,26 @@
+<!--
+  ~ Copyright 2022 Koreography Contributors
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="77dp"
+    android:height="66dp"
+    android:viewportWidth="77"
+    android:viewportHeight="66">
+  <path
+      android:pathData="M64.289,65.455C63.743,65.177 63.051,64.626 62.751,64.229C62.451,63.832 62.089,63.069 61.946,62.534C61.804,61.999 61.757,61.271 61.842,60.917C61.927,60.563 62.439,59.227 62.98,57.948C63.522,56.67 64.438,54.154 65.016,52.359C65.594,50.563 66.33,47.85 66.651,46.328C66.973,44.807 67.405,42.228 67.613,40.597C67.85,38.732 67.989,35.919 67.989,33.012C67.989,30.138 67.849,27.291 67.619,25.479C67.415,23.878 67.039,21.539 66.783,20.281C66.528,19.024 65.998,16.852 65.606,15.454C65.215,14.057 64.205,11.198 63.362,9.101C62.226,6.277 61.832,5.014 61.839,4.229C61.845,3.542 62.034,2.868 62.374,2.318C62.663,1.85 63.261,1.192 63.703,0.855C64.271,0.422 64.871,0.212 65.75,0.139C66.433,0.082 67.26,0.103 67.587,0.185C67.914,0.267 68.585,0.699 69.078,1.144C69.728,1.732 70.267,2.622 71.039,4.385C71.625,5.722 72.512,8 73.011,9.446C73.509,10.893 74.278,13.512 74.718,15.267C75.159,17.022 75.734,19.757 75.997,21.346C76.26,22.934 76.58,25.481 76.709,27.006C76.838,28.53 76.944,31.233 76.944,33.012C76.944,34.791 76.838,37.494 76.709,39.019C76.58,40.544 76.26,43.091 75.999,44.679C75.737,46.267 75.126,49.126 74.642,51.032C74.157,52.938 73.271,55.849 72.673,57.501C72.076,59.153 71.156,61.385 70.629,62.462C69.981,63.787 69.39,64.642 68.801,65.105C68.118,65.642 67.646,65.807 66.606,65.874C65.582,65.94 65.057,65.844 64.289,65.455Z"
+      android:fillColor="#1F212B"/>
+
+</vector>

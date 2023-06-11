@@ -1,0 +1,38 @@
+<!--
+  ~ Copyright 2022 Koreography Contributors
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="1080dp"
+    android:height="1080dp"
+    android:viewportWidth="1080"
+    android:viewportHeight="1080">
+  <path
+      android:pathData="M844.5,638.2L802,613.7C800.8,613 800.7,611.9 800.7,611.5C800.7,611 800.8,609.9 802,609.3L844.5,584.7C850.7,581.2 858.3,581.2 864.4,584.7L907,609.3C908.1,609.9 908.3,611 908.3,611.5C908.3,611.9 908.1,613 907,613.7L864.4,638.2C861.4,640 857.9,640.9 854.5,640.9C851,640.9 847.6,640 844.5,638.2ZM842.6,581.3L800,605.9C798,607 796.8,609.1 796.8,611.5C796.8,613.8 798,615.9 800,617.1L842.6,641.6C846.3,643.8 850.4,644.8 854.5,644.8C858.6,644.8 862.7,643.8 866.4,641.6L909,617.1C911,615.9 912.2,613.8 912.2,611.5C912.2,609.1 911,607 909,605.9L866.4,581.3C862.7,579.2 858.6,578.1 854.5,578.1C850.4,578.1 846.2,579.2 842.6,581.3Z">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startX="796.4"
+          android:startY="611.5"
+          android:endX="913"
+          android:endY="612"
+          android:type="linear">
+        <item android:offset="0" android:color="#FFE29A65"/>
+        <item android:offset="0.5" android:color="#FFE67C79"/>
+        <item android:offset="1" android:color="#FFE95F8D"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+</vector>
