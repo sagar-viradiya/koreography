@@ -7,7 +7,7 @@ _Choreograph your Compose Animation 💃🕺_
 [![Twitter Follow](https://img.shields.io/twitter/follow/viradiya_sagar?label=Follow&style=social)](https://twitter.com/viradiya_sagar)
 
 <br>
-A lightweight Compose Animation utility library to choreograph low-level [Animation API](https://developer.android.com/jetpack/compose/animation#animation) through Kotlin DSL. It does the heavy lifting of dealing with coroutines under the hood so that you can focus on your animation choreography.
+A lightweight Compose Animation utility library to choreograph low-level Animation API (https://developer.android.com/jetpack/compose/animation#animation) through Kotlin DSL. It does the heavy lifting of dealing with coroutines under the hood so that you can focus on your animation choreography.
 
 ## Including in your project
 Koreography is available on `mavenCentral()`
@@ -18,7 +18,7 @@ implementation 'io.github.sagar-viradiya:koreography:0.3.0'
 
 ## Usage
 
-Creating choreography is the process of recording moves on [Animatable](https://developer.android.com/jetpack/compose/animation/value-based#animatable), A low level compose animation API. Moves could be either parallel or sequential. A choreography is a compostion of such moves that you can declare through clean and concise Kotlin DSL as shown below. 
+Creating choreography is the process of recording moves on [Animatable](https://developer.android.com/jetpack/compose/animation/value-based#animatable), A low level compose animation API. Moves could be either parallel or sequential. A choreography is a composition of such moves that you can declare through clean and concise Kotlin DSL as shown below. 
 
 ### Choreographying sequential animation
 
