@@ -20,6 +20,8 @@ implementation 'io.github.sagar-viradiya:koreography:0.3.0'
 
 Creating choreography is the process of recording moves on [Animatable](https://developer.android.com/jetpack/compose/animation/value-based#animatable), A low level compose animation API. Moves could be either parallel or sequential. A choreography is a composition of such moves that you can declare through clean and concise Kotlin DSL as shown below. 
 
+For example, let's say you want to sequentially animate alpha first and then scale of an image then you can declare the following choreography. You would then apply animatable values that you are animating in choreography in the Image composable as shown below.
+
 ### Choreographying sequential animation
 
 ```kotlin
@@ -44,9 +46,21 @@ val koreography = rememberKoreography {
         animationSpec = tween(500)
     )
 }
+.
+.
+.
+Image(
+    modifier = Modifier.graphicsLayer {
+        alpha = alphaAnimatable.value
+        scaleX = scaleAnimatable.value
+    }, 
+    painter = painterResource(id = R.drawable.image)
+)
 ```
 
 ### Choreographying parallel animation
+
+Let's say you want to parallelly animate alpha and scale of an image then you can declare the following choreography.
 
 ```kotlin
 val alphaAnimatable = remember {
@@ -72,6 +86,16 @@ val koreography = rememberKoreography {
         )
     }
 }
+.
+.
+.
+Image(
+    modifier = Modifier.graphicsLayer {
+        alpha = alphaAnimatable.value
+        scaleX = scaleAnimatable.value
+    }, 
+    painter = painterResource(id = R.drawable.image)
+)
 ```
 
 ### Complex choreography
@@ -123,6 +147,18 @@ val koreography = rememberKoreography {
         }
     }
 }
+.
+.
+.
+Image(
+    modifier = Modifier.graphicsLayer {
+        alpha = alphaAnimatable.value
+        scaleX = scaleAnimatable.value
+        translationX = translationXAnimatable.value
+        rotationZ = rotationAnimatable.value
+    }, 
+    painter = painterResource(id = R.drawable.image)
+)
 ``` 
 
 ### Executing choreography
@@ -165,6 +201,8 @@ koreography.danceForever(scope = coroutineScope){
 
 Executing choreography based on state change is also supported. This API is similar to [`LaunchedEffect`](https://developer.android.com/jetpack/compose/side-effects#launchedeffect) API of compose side effects.
 
+In the following example, we are executing choreography passed in the trailing lambda of `LaunchKoreography` composable on a state value change. Choreography contains two animations that will be executed sequentially.
+
 ```kotlin
 val alphaAnimatable = remember {
     Animatable(0f)
@@ -187,9 +225,17 @@ LaunchKoreography(state) {
         animationSpec = tween(500)
     )
 }
+.
+.
+.
+Image(
+    modifier = Modifier.graphicsLayer {
+        alpha = alphaAnimatable.value
+        scaleX = scaleAnimatable.value
+    }, 
+    painter = painterResource(id = R.drawable.image)
+)
 ```
-
-The choreography passed in the trailing lambda above would be executed on every `state` change.
 
 ### Samples
 
